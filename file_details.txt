@@ -1,0 +1,45 @@
+Case folder naming convention
+
+
+
+
+Each case folder includes the following files:
+
+1) basis_vecs.mat
+         Vde: [19585×42 double] - Reduced basis vectors for approximating the static displacement {X}response from: 
+		           [K]{X} = {F}
+
+        	[ K11 | K12 ]{X1}   {F1}
+		 -----------  --  =  --
+        	[ K21 | K22 ]{X2}   {0}
+
+        	  K21 X1 + K22 X2 = 0; 
+
+     n_train: 400 - Number of designs used for training
+      r_buck: 24 - Order of the buckling ROM, i.e., order of matrices involved in the reduced buckling eigenanalysis [K_r]*{v} - lam*[G_r]*{v} = 0
+      r_stat: 42 - Order of the static ROM, i.e., number of vectors in Vde
+    tol_buck: 0.99 - tolerance used to pick the order r_buck
+    tol_stat: 0.99 - tolerance used to pick the order r_stat
+     u_mixed: [11811×24 double] - Reduced basis vectors for buckling ROM
+
+
+2) elemdof_list.mat
+
+	elemdof_list: FEM mesh element connectivity (rows - 1296 elements; columns - 8 nodes and 5 degrees of freedom --> 40)
+
+
+3) red_vat_elewise_mats.mat
+
+	FOM_K: Affine components of full-order linear stiffness matrix
+      RED_Kmn: Affine components of reduced-order linear stiffness matrix
+
+
+4) G_red_mats.mat
+
+	G_red: [24×24×1296×3 double] 
+
+
+5) stress_mats.mat
+
+      stress_curv_mat: [1296×3×43×6 double]
+    stress_normal_mat: [1296×3×43×6 double]
